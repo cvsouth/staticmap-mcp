@@ -1,0 +1,29 @@
+[project]
+name = "staticmap-mcp"
+version = "0.1.0"
+description = "MCP server for rendering static route maps with OSM tiles"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "staticmap>=0.5.7",
+]
+
+[project.scripts]
+staticmap-mcp = "staticmap_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/staticmap_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+]
